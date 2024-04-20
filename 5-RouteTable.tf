@@ -2,7 +2,7 @@
 #create routing tables and associate subnets with them
 
 resource "aws_route_table" "private_rt_1" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc-main-eks.id
 
   route = [
     {
@@ -28,7 +28,7 @@ resource "aws_route_table" "private_rt_1" {
 }
 
 resource "aws_route_table" "private_rt_2" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc-main-eks.id
 
   route = [
     {
@@ -54,7 +54,7 @@ resource "aws_route_table" "private_rt_2" {
 }
 
 resource "aws_route_table" "public_rt" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc-main-eks.id
 
   route = [
     {
