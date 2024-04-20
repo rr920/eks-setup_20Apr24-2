@@ -35,6 +35,7 @@ resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.my_cluster.name
   node_group_name = "private-nodes"
   node_role_arn   = aws_iam_role.nodes.arn
+  
 
   subnet_ids = [
     aws_subnet.private_subnet_az1.id,
@@ -74,6 +75,10 @@ resource "aws_eks_node_group" "private-nodes" {
     aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
   ]
+}
+
+resource "aws_eip" "node_eip" {
+  vpc = true
 }
 
 # resource "aws_launch_template" "eks-with-disks" {
